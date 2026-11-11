@@ -36,7 +36,13 @@ add_executable(${CMAKE_PROJECT_NAME}
     Core/bsp/bsp_iic.c/bsp_iic.c
     Core/bsp/bsp_iic.c/bsp_iic.h
     Core/bsp/bsp_usart/bsp_usart.c
-    Core/bsp/bsp_usart/bsp_usart.h)
+    Core/bsp/bsp_usart/bsp_usart.h
+    Core/bsp/bsp_can/bsp_can.c
+    Core/bsp/bsp_can/bsp_can.h
+    Core/module/mpu6050/mpu6050.c
+    Core/module/mpu6050/mpu6050.h
+    Core/module/oled/oled.c
+    Core/module/oled/oled.h)
 
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)

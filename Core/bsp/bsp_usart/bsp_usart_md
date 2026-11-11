@@ -1,0 +1,14 @@
+# bsp_usart
+
+-ver 0.1       
+-date 2026/11/12
+
+>对串口的基本功能进行封装
+
+## 注意事项
+
+队列发送功能未在此处实现，使用DMA/IT进行快速连续发送时需注意。
+
+
+参考湖南大学RoboMaster跃鹿战队电控开源代码    
+https://github.com/HNUYueLuRM/basic_framework/

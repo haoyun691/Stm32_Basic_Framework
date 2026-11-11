@@ -1,19 +1,17 @@
 /**
  * @file bsp_iic.c
- * @author haoyun691
  * @brief 硬件i2c的bsp层的实现
  * @version 0.1
  */
 
 #include "bsp_iic.h"
-#include "stm32f1xx_hal_def.h"
 #include "stm32f1xx_hal_i2c.h"
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 
 static uint8_t id = 0;
-static IICInstance *p_iic_instance[IIC_DEVICE_CNT] = {NULL};
+static IICInstance *iic_instance[IIC_DEVICE_CNT] = {NULL};
 
 /**
  * @brief 注册i2c实例
@@ -34,7 +32,7 @@ IICInstance *IICRegieter(IIC_Init_Config_s *conf){
     p_instance->callback = conf->callback;
     p_instance->id = conf->id;
 
-    p_iic_instance[id++] = p_instance;
+    iic_instance[id++] = p_instance;
 
     return p_instance;
 }
@@ -105,9 +103,9 @@ void IIC_Receive(IICInstance *iic, uint8_t *pData, uint16_t Size){
 void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c){
 
     for (uint8_t i = 0; i < id; i++) {
-        if (p_iic_instance[i]->handle == hi2c && hi2c->Devaddress == p_iic_instance[i]->iic_address) {
-            if (p_iic_instance[i]->callback != NULL) {
-                p_iic_instance[i]->callback(p_iic_instance[i]);
+        if (iic_instance[i]->handle == hi2c && hi2c->Devaddress == iic_instance[i]->iic_address) {
+            if (iic_instance[i]->callback != NULL) {
+                iic_instance[i]->callback(iic_instance[i]);
             }
             return;
         }

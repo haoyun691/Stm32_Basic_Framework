@@ -19,6 +19,7 @@ typedef enum{
 
 } IIC_Work_Mode_e;
 
+
 /* i2c实例结构体 */
 typedef struct iic_temp_s
 {
@@ -32,6 +33,7 @@ typedef struct iic_temp_s
 
     void *id; //实例标识
 } IICInstance;
+
 
 /* i2c初始化参数配置结构体 */
 typedef struct
