@@ -42,7 +42,11 @@ add_executable(${CMAKE_PROJECT_NAME}
     Core/module/mpu6050/mpu6050.c
     Core/module/mpu6050/mpu6050.h
     Core/module/oled/oled.c
-    Core/module/oled/oled.h)
+    Core/module/oled/oled.h
+    Core/module/algorithm/pid.c
+    Core/module/algorithm/pid.h
+    Core/bsp/bsp_dwt/bsp_dwt.h
+    Core/bsp/bsp_dwt/bsp_dwt.c)
 
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
